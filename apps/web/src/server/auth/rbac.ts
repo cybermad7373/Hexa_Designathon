@@ -104,11 +104,7 @@ export function canRemoveMember(actorRole: Role, targetRole: Role, ownerCount: n
   return false;
 }
 
-export function assertCanRemoveMember(
-  actorRole: Role,
-  targetRole: Role,
-  ownerCount: number,
-): void {
+export function assertCanRemoveMember(actorRole: Role, targetRole: Role, ownerCount: number): void {
   if (!canRemoveMember(actorRole, targetRole, ownerCount)) {
     throw new AppError(ERROR_CODES.FORBIDDEN, "You cannot remove this member.");
   }

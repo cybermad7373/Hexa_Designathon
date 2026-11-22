@@ -31,7 +31,8 @@
    - demo strength;
    - defensibility.
 7. Choose one angle and state why. Name the riskiest assumption and the cheapest way to validate it.
-8. Use `websearch` only if the domain is unfamiliar. Cite sources or label the claim as an assumption.
+8. Use the `WebSearch` tool only if the domain is unfamiliar. Cite sources or label the claim as an
+   assumption.
 9. Do not design the solution, the schema, or the UI yet.
 
 ## Output structure

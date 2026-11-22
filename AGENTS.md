@@ -33,9 +33,9 @@ If the clock is tight, compress the artifacts. Never skip them.
 | #   | Phase            | Time        | Artifact                                      | Exit gate                                        | Skills                                                                                       |
 | --- | ---------------- | ----------- | --------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------- |
 | 00  | Intake           | 0:00–0:15   | `00-problem-statement.md`                     | Requirements, constraints, unknowns captured     | —                                                                                            |
-| 01  | Explore          | 0:15–0:55   | `01-opportunity-map.md`                       | Users, jobs, alternatives, assumptions           | `websearch`                                                                                  |
+| 01  | Explore          | 0:15–0:55   | `01-opportunity-map.md`                       | Users, jobs, alternatives, assumptions           | `WebSearch` tool                                                                             |
 | 02  | Edge cases       | 0:55–1:20   | `02-edge-cases.md`                            | Failure matrix, abuse cases, top 10 decisions    | —                                                                                            |
-| 03  | Research         | 1:20–1:45   | `03-research.md`                              | Sources, prior art, build-vs-borrow              | `websearch`, `webfetch`                                                                      |
+| 03  | Research         | 1:20–1:45   | `03-research.md`                              | Sources, prior art, build-vs-borrow              | `WebSearch`, `WebFetch` tools                                                                |
 | 04  | Enhance PS       | 1:45–2:15   | `04-enhanced-problem-statement.md`            | Metrics, scope, acceptance criteria              | —                                                                                            |
 | 05  | Solution design  | 2:15–3:00   | `05-solution-design.md`                       | Architecture, data, API, RBAC, email, risks, slices | Read `docs/ARCHITECTURE.md`, `SCALABILITY.md`, `SECURITY.md`, `DATA-MODEL.md`             |
 | 06  | Visual direction | 3:00–3:30   | `06-visual-direction.md`                      | Design read, tokens, motion, reference assets    | `design-taste-frontend` + one image skill                                                    |
@@ -102,7 +102,7 @@ If a skill is unavailable, follow `docs/DESIGN-SYSTEM.md` and state which fallba
 | `npm run test`          | Vitest unit tests                                    |
 | `npm run test:e2e`      | Playwright golden-path and smoke tests               |
 | `npm run build`         | Production build                                     |
-| `npm run check`         | Lint + typecheck + unit tests + build                |
+| `npm run check`         | Format + lint + typecheck + unit tests + build       |
 | `npm run release:check` | Full release gate with timings and a report          |
 | `npm run security:audit`| Production dependency audit                          |
 | `npm run verify`        | Machine and environment check                        |

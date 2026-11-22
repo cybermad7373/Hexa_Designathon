@@ -195,7 +195,10 @@ secrets or full PII payloads in metadata.
 ## Dependencies
 
 - Dependabot is enabled.
-- CI audits production dependencies at `critical`; the release gate audits at `high`.
+- CI and the release gate audit production dependencies at `high`; the baseline is zero findings.
+- Transitive security fixes are pinned through `overrides` in the root `package.json` (`postcss`,
+  `effect`, `deepmerge-ts`) until Next.js and Prisma ship patched ranges. Re-check the pins on every
+  major upgrade and remove them once the parent ranges include the fixes.
 - Remove unused packages before submission.
 - Do not add a package for a one-line utility.
 - Pin major versions and review lockfile changes.

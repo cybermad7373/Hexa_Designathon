@@ -5,6 +5,9 @@ node_modules
 coverage
 playwright-report
 test-results
+artifacts
+licenses
+THIRD-PARTY-NOTICES.md
 .env
 .env.*
 !.env.example

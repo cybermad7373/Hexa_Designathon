@@ -1,9 +1,4 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  TerminalWindow,
-} from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, ArrowUpRight, Check, TerminalWindow } from "@phosphor-icons/react/dist/ssr";
 import { HexMark } from "@/components/brand/hex-mark";
 import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/button";
@@ -132,7 +127,10 @@ export default function HomePage() {
             </span>
           </a>
           <div className="flex items-center gap-4">
-            <nav aria-label="Primary" className="hidden items-center gap-6 text-sm text-muted md:flex">
+            <nav
+              aria-label="Primary"
+              className="hidden items-center gap-6 text-sm text-muted md:flex"
+            >
               <a href="#workflow" className="transition-colors hover:text-fg">
                 Workflow
               </a>

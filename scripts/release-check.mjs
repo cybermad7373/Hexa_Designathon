@@ -13,7 +13,12 @@ const steps = [
   { id: "lint", label: "Lint", args: ["run", "lint"] },
   { id: "typecheck", label: "Typecheck", args: ["run", "typecheck"] },
   { id: "unit", label: "Unit tests", args: ["run", "test"] },
-  { id: "build", label: "Production build", args: ["run", "build"], skip: flags.has("--skip-build") },
+  {
+    id: "build",
+    label: "Production build",
+    args: ["run", "build"],
+    skip: flags.has("--skip-build"),
+  },
   {
     id: "e2e",
     label: "End-to-end tests",
@@ -30,7 +35,7 @@ const steps = [
 ];
 
 function capture(command, args) {
-  const result = spawnSync(command, args, {
+  const result = spawnSync([command, ...args].join(" "), {
     cwd: root,
     encoding: "utf8",
     shell,
@@ -55,7 +60,7 @@ for (const step of steps) {
 
   console.log(`\n>>> ${step.label}`);
   const start = performance.now();
-  const result = spawnSync("npm", step.args, {
+  const result = spawnSync(["npm", ...step.args].join(" "), {
     cwd: root,
     stdio: "inherit",
     shell,

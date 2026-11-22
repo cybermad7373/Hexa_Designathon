@@ -36,7 +36,7 @@ npm run test              # unit tests
 npm run test:watch        # watch mode
 npm run test:coverage     # coverage report
 npm run test:e2e          # Playwright, starts the dev server
-npm run check             # lint + typecheck + unit + build
+npm run check             # format + lint + typecheck + unit + build
 npm run release:check     # full gate with timings and a report
 ```
 

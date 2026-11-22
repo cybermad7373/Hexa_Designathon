@@ -26,7 +26,10 @@ function escapeHtml(value: string): string {
 }
 
 function sanitizeHeader(value: string): string {
-  return value.replace(/[\r\n]+/g, " ").trim().slice(0, 200);
+  return value
+    .replace(/[\r\n]+/g, " ")
+    .trim()
+    .slice(0, 200);
 }
 
 function safeUrl(value: string): string {
@@ -96,7 +99,9 @@ const renderers: Renderers = {
   welcome: ({ name, loginUrl }) => {
     const heading = `Welcome, ${name}`;
     const body = [
-      paragraph("Your Hexa workspace is ready. Open the app to see the current mission and the next gate."),
+      paragraph(
+        "Your Hexa workspace is ready. Open the app to see the current mission and the next gate.",
+      ),
       paragraph("If the button does not work, paste the link from this email into your browser."),
     ].join("");
 
@@ -176,7 +181,9 @@ const renderers: Renderers = {
     const heading = "Reset your password";
     const body = [
       paragraph(`Hi ${name}, use the button below to set a new password.`),
-      paragraph(`This link expires in ${expiresInMinutes} minutes. If you did not request it, ignore this email.`),
+      paragraph(
+        `This link expires in ${expiresInMinutes} minutes. If you did not request it, ignore this email.`,
+      ),
     ].join("");
 
     return {
@@ -192,13 +199,7 @@ const renderers: Renderers = {
     };
   },
 
-  "notification.digest": ({
-    name,
-    workspaceName,
-    summary,
-    workspaceUrl,
-    preferencesUrl,
-  }) => {
+  "notification.digest": ({ name, workspaceName, summary, workspaceUrl, preferencesUrl }) => {
     const heading = `What changed in ${workspaceName}`;
     const body = [
       paragraph(`Hi ${name}, here is the latest activity in ${workspaceName}.`),

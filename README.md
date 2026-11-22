@@ -9,7 +9,7 @@ window.
 
 ## Quickstart
 
-Requirements: Node 20.9+, npm 10+, Git, and Docker Desktop. Full setup:
+Requirements: Node 22.12+, npm 10+, Git, and Docker Desktop. Full setup:
 [docs/PREREQUISITES.md](docs/PREREQUISITES.md).
 
 ```bash
@@ -45,6 +45,7 @@ problem statement is in place, run the master workflow and build only what the b
 │   ├── SCALABILITY.md            # capacity, caching, pagination, load tests
 │   ├── SECURITY.md               # threat model and OWASP checklist
 │   ├── DESIGN-SYSTEM.md          # anti-slop visual standard
+│   ├── NAMING.md                 # product naming and rebrand checklist
 │   ├── QUALITY-BAR.md            # definition of done and release gate
 │   ├── API-STANDARDS.md          # envelopes, errors, pagination, idempotency
 │   ├── DATA-MODEL.md             # tenancy, RBAC, email outbox, indexing
@@ -53,7 +54,7 @@ problem statement is in place, run the master workflow and build only what the b
 │   ├── DEMO-AND-PITCH.md         # 3-minute script and Q&A
 │   ├── SUBMISSION-CHECKLIST.md   # final 30 minutes
 │   ├── decisions/                # architecture decision records
-│   └── discovery/                # phase artifacts, created as you go
+│   └── discovery/                # phase artifact templates, filled in as you go
 ├── licenses/                     # full texts of dependency licenses
 ├── prompts/
 │   ├── MASTER-WORKFLOW.md        # the runbook to paste with the brief
@@ -92,7 +93,7 @@ The full runbook is [prompts/MASTER-WORKFLOW.md](prompts/MASTER-WORKFLOW.md). Th
 | `npm run typecheck`     | TypeScript                                     |
 | `npm run test`          | Vitest                                         |
 | `npm run test:e2e`      | Playwright                                     |
-| `npm run check`         | Lint + types + unit + build                    |
+| `npm run check`         | Format + lint + types + unit + build           |
 | `npm run release:check` | Full release gate, writes a timed report       |
 | `npm run security:audit`| Production dependency audit                    |
 | `npm run verify`        | Check the machine and environment              |
@@ -112,6 +113,10 @@ The full runbook is [prompts/MASTER-WORKFLOW.md](prompts/MASTER-WORKFLOW.md). Th
 
 The stack is a default, not a religion. If the problem demands something else, write an ADR in
 `docs/decisions/` and update `docs/ARCHITECTURE.md` before coding.
+
+Security pins: the root `package.json` overrides three transitive packages (`postcss`, `effect`,
+`deepmerge-ts`) to patched versions that their parents have not adopted yet. Production audit is
+clean. Re-check the pins when Next.js or Prisma is upgraded.
 
 ## Standards
 

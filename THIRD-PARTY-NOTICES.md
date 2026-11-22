@@ -4,6 +4,7 @@ This project is distributed under the MIT License (see [LICENSE](LICENSE)). It d
 the third-party packages listed below. Each package remains subject to its own license.
 
 Generated on 2026-11-22 from `package-lock.json`.
+This is a snapshot: regenerate it after dependency upgrades so versions and counts match the lockfile.
 Full license texts are in the [`licenses/`](licenses) directory. Package-specific
 copyright lines are kept in each package's own LICENSE file under `node_modules/`.
 

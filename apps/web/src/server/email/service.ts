@@ -4,12 +4,7 @@ import { z } from "zod";
 import { env } from "@/lib/env";
 import { logger } from "@/lib/logger";
 import { db } from "@/server/db";
-import {
-  EMAIL_CATEGORIES,
-  isEmailEvent,
-  type EmailEvent,
-  type EmailPayloads,
-} from "./events";
+import { EMAIL_CATEGORIES, isEmailEvent, type EmailEvent, type EmailPayloads } from "./events";
 import { getEmailProvider } from "./provider";
 import { renderEmail } from "./render";
 
@@ -53,7 +48,8 @@ export async function enqueueEmail<K extends EmailEvent>(
       where: { userId: input.userId },
     });
 
-    const allowed = category === "product" ? (preference?.product ?? true) : (preference?.marketing ?? false);
+    const allowed =
+      category === "product" ? (preference?.product ?? true) : (preference?.marketing ?? false);
 
     if (!allowed) {
       logger.info({ event: input.event, userId: input.userId }, "email skipped by preference");
@@ -133,10 +129,7 @@ export async function processEmailQueue(limit = 25): Promise<ProcessEmailQueueRe
         throw new Error("Unknown email template");
       }
 
-      const rendered = renderEmail(
-        template,
-        message.payload as EmailPayloads[typeof template],
-      );
+      const rendered = renderEmail(template, message.payload as EmailPayloads[typeof template]);
       const provider = getEmailProvider();
       const sent = await provider.send({
         ...rendered,
@@ -156,10 +149,7 @@ export async function processEmailQueue(limit = 25): Promise<ProcessEmailQueueRe
       });
 
       result.sent += 1;
-      logger.info(
-        { emailId: message.id, template, provider: provider.name },
-        "email sent",
-      );
+      logger.info({ emailId: message.id, template, provider: provider.name }, "email sent");
     } catch (error) {
       const finalAttempt = message.attempts >= MAX_ATTEMPTS;
       const delayMs = Math.min(2 ** message.attempts * 60_000, 60 * 60_000);

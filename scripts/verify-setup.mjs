@@ -20,8 +20,8 @@ function check(name, status, detail) {
 
 const nodeVersion = process.versions.node;
 const [nodeMajor, nodeMinor] = nodeVersion.split(".").map(Number);
-const nodeOk = nodeMajor > 20 || (nodeMajor === 20 && nodeMinor >= 9);
-check("Node.js >= 20.9", nodeOk ? "pass" : "fail", `v${nodeVersion}`);
+const nodeOk = nodeMajor > 22 || (nodeMajor === 22 && nodeMinor >= 12);
+check("Node.js >= 22.12", nodeOk ? "pass" : "fail", `v${nodeVersion}`);
 
 const npmVersion = run("npm --version");
 check("npm", npmVersion ? "pass" : "fail", npmVersion ?? "not found");
@@ -30,9 +30,13 @@ const gitVersion = run("git --version");
 check("git", gitVersion ? "pass" : "fail", gitVersion ?? "not found");
 
 const dockerVersion = run("docker --version");
-check("Docker (optional for local DB)", dockerVersion ? "pass" : "warn", dockerVersion ?? "not found");
+check(
+  "Docker (optional for local DB)",
+  dockerVersion ? "pass" : "warn",
+  dockerVersion ?? "not found",
+);
 
-const dockerRunning = run("docker info --format \"{{.ServerVersion}}\"");
+const dockerRunning = run('docker info --format "{{.ServerVersion}}"');
 check(
   "Docker daemon running",
   dockerRunning ? "pass" : "warn",
@@ -83,7 +87,9 @@ for (const item of checks) {
 
 const failures = checks.filter((item) => item.status === "fail").length;
 const warnings = checks.filter((item) => item.status === "warn").length;
-console.log(`\n${checks.length - failures - warnings} passed, ${warnings} warnings, ${failures} failures.`);
+console.log(
+  `\n${checks.length - failures - warnings} passed, ${warnings} warnings, ${failures} failures.`,
+);
 if (failures > 0) {
   console.log("Fix failures above, then re-run: npm run verify\n");
   process.exit(1);

@@ -13,7 +13,7 @@
 ## Do
 
 1. Search prior art, competitors, open-source projects, APIs, datasets, regulations, and benchmarks.
-2. Use `websearch` and `webfetch`. Record the URL and access date for every source.
+2. Use the `WebSearch` and `WebFetch` tools. Record the URL and access date for every source.
 3. Separate fact from inference:
    - **Fact:** supported by a source.
    - **Inference:** your conclusion from facts.

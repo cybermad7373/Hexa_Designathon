@@ -135,7 +135,7 @@ Do:
 - Generate three opportunity angles. Score each on impact, feasibility in 10 hours, demo strength,
   and defensibility.
 - List assumptions that could kill the idea and how to validate the riskiest one cheaply.
-- Use `websearch` if the domain is unfamiliar. Cite sources or label assumptions.
+- Use the `WebSearch` tool if the domain is unfamiliar. Cite sources or label assumptions.
 
 Output: `docs/discovery/01-opportunity-map.md` with personas, jobs, alternatives, angles, scores, and
 assumptions.
@@ -176,7 +176,7 @@ Timebox: 25 minutes. Stop when the timebox ends.
 Do:
 
 - Search prior art, competitors, open-source projects, APIs, datasets, regulations, and benchmarks.
-- Use `websearch` and `webfetch`. Record URL and access date.
+- Use the `WebSearch` and `WebFetch` tools. Record URL and access date.
 - Separate fact from inference. If there is no source, label it an assumption.
 - Build a build-vs-borrow table with effort and risk.
 - Name the differentiator the product can defend in the demo.

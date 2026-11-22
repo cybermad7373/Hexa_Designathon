@@ -4,7 +4,11 @@ This directory is the audit trail of the ten-hour build. Every phase writes one 
 phase reads it before starting.
 
 The repo is a scaffold. Do not pre-fill these artifacts with an invented product idea. Phase 00 stays
-blank until the raw brief arrives.
+blank until the raw brief arrives. Artifacts 01–10 ship as empty templates: fill them in place during
+their phase, keep the headings, and delete the instructional quotes once the phase is done.
+
+Product naming is decided only after the brief is reviewed. See
+[`docs/NAMING.md`](../NAMING.md) for the rename checklist.
 
 ## Artifact map
 
@@ -54,6 +58,9 @@ Update this table as you go.
 | 10    | ⬜     |          |       |
 
 Legend: ⬜ pending, 🟡 in progress, ✅ done, 🚫 blocked.
+
+A phase is done only when its template is filled, its gate passes, and the status below is updated.
+Having a template on disk is not progress.
 
 ## Handoff format
 

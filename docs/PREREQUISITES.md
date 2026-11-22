@@ -6,7 +6,7 @@ Everything needed before the clock starts. Do this the day before, not at hour z
 
 | Tool           | Version  | Why                                      | Install (Windows)                              |
 | -------------- | -------- | ---------------------------------------- | ---------------------------------------------- |
-| Node.js        | 20.9+    | Runtime. 22 LTS recommended.             | `winget install OpenJS.NodeJS.LTS`             |
+| Node.js        | 22.12+   | Runtime. 22 LTS or 24.                   | `winget install OpenJS.NodeJS.LTS`             |
 | npm            | 10+      | Workspaces and scripts.                  | Ships with Node                                |
 | Git            | 2.40+    | Version control.                         | `winget install Git.Git`                       |
 | Docker Desktop | 4.x      | Postgres, Redis, and Mailpit locally.    | `winget install Docker.DockerDesktop`          |
@@ -110,6 +110,7 @@ for optional tools are fine.
 | PowerShell blocks npm.ps1              | Use `npm.cmd` or set `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. |
 | `apps/web/.env` missing                | `npm run setup`.                                                    |
 | Build fails on a fresh clone           | Ensure `DATABASE_URL` exists; the app validates env at runtime.     |
+| `npm run check` fails with `EPERM` on Windows | Stop `npm run dev` first. On Windows, `prisma generate` cannot replace the engine DLL while the dev server holds it. |
 
 ## Security notes for local setup
 
