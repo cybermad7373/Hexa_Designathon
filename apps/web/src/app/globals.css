@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme {
+  --color-ink: #08090a;
+  --color-surface: #101114;
+  --color-surface-2: #15171b;
+  --color-line: #24262c;
+  --color-fg: #f2f2ee;
+  --color-muted: #9b9ca3;
+  --color-signal: #d6ff3f;
+  --color-signal-ink: #101400;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-signal-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+}
+
+.grid-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, black 10%, transparent 80%);
+}
+
+.skip-link {
+  position: fixed;
+  top: -4rem;
+  left: 1rem;
+  z-index: 100;
+  border-radius: 9999px;
+  background-color: var(--color-signal);
+  color: var(--color-signal-ink);
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 150ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .rise-2 {
+    animation-delay: 90ms;
+  }
+
+  .rise-3 {
+    animation-delay: 160ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

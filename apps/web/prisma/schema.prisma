@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum EmailStatus {
+  QUEUED
+  SENDING
+  SENT
+  FAILED
+  CANCELED
+}
+
+model User {
+  id              String           @id @default(cuid())
+  email           String           @unique
+  name            String?
+  imageUrl        String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  memberships     Membership[]
+  auditLogs       AuditLog[]
+  emails          EmailMessage[]
+  emailPreference EmailPreference?
+}
+
+model Workspace {
+  id          String         @id @default(cuid())
+  name        String
+  slug        String         @unique
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  memberships Membership[]
+  auditLogs   AuditLog[]
+  emails      EmailMessage[]
+}
+
+model Membership {
+  id          String    @id @default(cuid())
+  userId      String
+  workspaceId String
+  role        Role      @default(MEMBER)
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId, role])
+}
+
+model AuditLog {
+  id          String     @id @default(cuid())
+  workspaceId String?
+  actorId     String?
+  action      String
+  entity      String
+  entityId    String?
+  metadata    Json?
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime   @default(now())
+  workspace   Workspace? @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+  actor       User?      @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([workspaceId, createdAt])
+  @@index([actorId, createdAt])
+  @@index([entity, entityId])
+}
+
+model EmailMessage {
+  id                String      @id @default(cuid())
+  workspaceId       String?
+  userId            String?
+  toEmail           String
+  template          String
+  subject           String
+  payload           Json
+  status            EmailStatus @default(QUEUED)
+  idempotencyKey    String      @unique
+  attempts          Int         @default(0)
+  lastError         String?
+  provider          String?
+  providerMessageId String?
+  scheduledAt       DateTime    @default(now())
+  sentAt            DateTime?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  workspace         Workspace?  @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+  user              User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([status, scheduledAt])
+  @@index([workspaceId, createdAt])
+  @@index([userId, createdAt])
+  @@index([toEmail, createdAt])
+}
+
+model EmailPreference {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  transactional Boolean  @default(true)
+  product       Boolean  @default(true)
+  marketing     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model EmailSuppression {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  reason    String
+  createdAt DateTime @default(now())
+}

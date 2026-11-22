@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+
+# Environment
+.env
+.env.*
+!.env.example
+!.env.test.example
+
+# Database
+*.db
+*.db-journal
+prisma/migrations/dev.db*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Generated reports
+artifacts/
+
+# Deployments
+.vercel
+.netlify
+.turbo
+
+# Local-only discovery notes (never commit secrets or customer data)
+docs/discovery/private/
