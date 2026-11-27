@@ -1,6 +1,6 @@
 # 01 — Opportunity map
 
-> Phase 01 · 0:15–0:55 · Source: `prompts/01-EXPLORE.md`
+> Phase 01 · 0:15–0:55 · Source: `agent-prompts/01-EXPLORE.md`
 > Fill this in only after the raw brief is captured in `00-problem-statement.md`.
 > Do not invent users, competitors, quotes, or metrics. Label every unverified claim as an assumption.
 
@@ -76,4 +76,4 @@ Scoring: 1–5 per column. The total only breaks ties; the demo strength and fea
 - [ ] The riskiest assumption has a validation plan.
 - [ ] No product code was written.
 
-Next: `prompts/02-EDGE-CASES.md` → `docs/discovery/02-edge-cases.md`
+Next: `agent-prompts/02-EDGE-CASES.md` → `docs/discovery/02-edge-cases.md`

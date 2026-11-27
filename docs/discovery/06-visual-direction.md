@@ -1,6 +1,6 @@
 # 06 — Visual direction
 
-> Phase 06 · 3:00–3:30 · Source: `prompts/06-VISUAL-DIRECTION.md`
+> Phase 06 · 3:00–3:30 · Source: `agent-prompts/06-VISUAL-DIRECTION.md`
 > Lock the visual system before building UI. Load `design-taste-frontend` with the skill tool, plus
 > one reference skill (`imagegen-frontend-web` or `imagegen-frontend-mobile`).
 > Brand lock: palette, typeface, and logo rules come from `docs/BRAND.md`. Record roles; never invent
@@ -118,4 +118,4 @@ No other typeface. No 700 or 800 weights.
 - [ ] Reference assets are saved.
 - [ ] Anti-slop and accessibility checks pass.
 
-Next: `prompts/07-BUILD.md` → `docs/discovery/07-build-log.md`
+Next: `agent-prompts/07-BUILD.md` → `docs/discovery/07-build-log.md`

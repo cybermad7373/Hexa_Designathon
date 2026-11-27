@@ -58,7 +58,7 @@ problem statement is in place, run the master workflow and build only what the b
 │   ├── decisions/                # architecture decision records
 │   └── discovery/                # phase artifact templates, filled in as you go
 ├── licenses/                     # full texts of dependency licenses
-├── prompts/
+├── agent-prompts/
 │   ├── MASTER-WORKFLOW.md        # the runbook to paste with the brief
 │   └── 00–10 phase prompts       # focused prompts for each gate
 ├── scripts/                      # setup, verify, release gate
@@ -79,8 +79,11 @@ problem statement is in place, run the master workflow and build only what the b
 10. **Test** in the protected final hour.
 11. **Demo** the golden path with a fallback.
 
-The full runbook is [prompts/MASTER-WORKFLOW.md](prompts/MASTER-WORKFLOW.md). The phase prompts are in
-[prompts/](prompts/).
+The full runbook is [agent-prompts/MASTER-WORKFLOW.md](agent-prompts/MASTER-WORKFLOW.md). The phase prompts are in
+[agent-prompts/](agent-prompts/).
+
+The runbook is development tooling. `npm run prepare:submission` removes it before submission; see
+[docs/SUBMISSION-CHECKLIST.md](docs/SUBMISSION-CHECKLIST.md).
 
 ## Commands
 

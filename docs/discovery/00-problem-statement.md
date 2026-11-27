@@ -61,4 +61,4 @@ PASTE THE PROBLEM STATEMENT HERE
 - [ ] Unknowns and assumptions are listed.
 - [ ] No solution has been proposed yet.
 
-Next: `prompts/01-EXPLORE.md` → `docs/discovery/01-opportunity-map.md`
+Next: `agent-prompts/01-EXPLORE.md` → `docs/discovery/01-opportunity-map.md`

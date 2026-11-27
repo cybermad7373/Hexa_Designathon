@@ -1,6 +1,6 @@
 # 10 — Demo and pitch
 
-> Phase 10 · 8:45–10:00 · Source: `prompts/10-DEMO-PITCH.md`
+> Phase 10 · 8:45–10:00 · Source: `agent-prompts/10-DEMO-PITCH.md`
 > The demo is the deliverable. Write it, rehearse it twice, and keep a fallback.
 
 ## 3-minute script

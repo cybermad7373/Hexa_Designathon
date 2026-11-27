@@ -1,6 +1,6 @@
 # 07 — Build log
 
-> Phase 07 · 3:30–6:45 · Source: `prompts/07-BUILD.md`
+> Phase 07 · 3:30–6:45 · Source: `agent-prompts/07-BUILD.md`
 > Update this log at least hourly. Record what works, what broke, the next step, and the risks.
 
 ## Current state
@@ -61,4 +61,4 @@ npm run test
 - [ ] No dead buttons, lorem ipsum, `any`, or `@ts-ignore`.
 - [ ] The build log is current.
 
-Next: `prompts/08-HARDEN.md` → `docs/discovery/08-hardening-report.md`
+Next: `agent-prompts/08-HARDEN.md` → `docs/discovery/08-hardening-report.md`

@@ -9,7 +9,7 @@ inventing the idea in advance.
 1. Put the raw problem statement in `docs/discovery/00-problem-statement.md`.
 2. Open `MASTER-WORKFLOW.md`.
 3. Paste it into the agent, with the problem statement appended under "Problem statement", or say:
-   "Read `prompts/MASTER-WORKFLOW.md` and run it. The brief is in
+   "Read `agent-prompts/MASTER-WORKFLOW.md` and run it. The brief is in
    `docs/discovery/00-problem-statement.md`."
 4. Let the agent run phases 00 → 10 in order. Review each artifact before the next phase.
 5. If you need to pause or hand off, use the individual phase prompt for the current phase.

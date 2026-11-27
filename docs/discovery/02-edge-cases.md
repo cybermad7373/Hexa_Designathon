@@ -1,6 +1,6 @@
 # 02 — Edge cases
 
-> Phase 02 · 0:55–1:20 · Source: `prompts/02-EDGE-CASES.md`
+> Phase 02 · 0:55–1:20 · Source: `agent-prompts/02-EDGE-CASES.md`
 > Attack the chosen angle before building it. Every must-handle case needs a decision and a test idea.
 
 ## Failure matrix
@@ -88,4 +88,4 @@
 - [ ] The UI state for each handled case is defined.
 - [ ] No product code was written.
 
-Next: `prompts/03-RESEARCH.md` → `docs/discovery/03-research.md`
+Next: `agent-prompts/03-RESEARCH.md` → `docs/discovery/03-research.md`

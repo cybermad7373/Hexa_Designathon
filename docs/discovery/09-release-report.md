@@ -1,6 +1,6 @@
 # 09 — Release report
 
-> Phase 09 · 7:45–8:45 · Source: `prompts/09-FINAL-TEST.md`
+> Phase 09 · 7:45–8:45 · Source: `agent-prompts/09-FINAL-TEST.md`
 > Feature freeze. Prove the frozen build works. Fix only blockers.
 
 ## Freeze
@@ -68,4 +68,4 @@ Report artifact: `artifacts/release-report.md`.
 - [ ] The fallback recording is playable.
 - [ ] Only blockers were fixed after the freeze.
 
-Next: `prompts/10-DEMO-PITCH.md` → `docs/discovery/10-demo-script.md`
+Next: `agent-prompts/10-DEMO-PITCH.md` → `docs/discovery/10-demo-script.md`

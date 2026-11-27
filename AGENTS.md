@@ -22,7 +22,7 @@ If the clock is tight, compress the artifacts. Never skip them.
 ## Start sequence
 
 1. Put the raw brief in `docs/discovery/00-problem-statement.md`.
-2. Read `prompts/MASTER-WORKFLOW.md` end to end.
+2. Read `agent-prompts/MASTER-WORKFLOW.md` end to end.
 3. Run phases 00 → 10 in order. One artifact per phase.
 4. At each phase boundary, load the listed skill with the `skill` tool.
 5. During the build, update `docs/discovery/07-build-log.md` at least hourly.
@@ -217,5 +217,5 @@ lower the bar.
 
 ## When the user gives the problem statement
 
-Run `prompts/MASTER-WORKFLOW.md`. That prompt is the source of truth for phase order, gates, and
+Run `agent-prompts/MASTER-WORKFLOW.md`. That prompt is the source of truth for phase order, gates, and
 artifact formats. This file is the standing contract; the master workflow is the runbook.

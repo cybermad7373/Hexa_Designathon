@@ -1,6 +1,6 @@
 # 08 — Hardening report
 
-> Phase 08 · 6:45–7:45 · Source: `prompts/08-HARDEN.md`
+> Phase 08 · 6:45–7:45 · Source: `agent-prompts/08-HARDEN.md`
 > Close what would embarrass the demo or the production story. Add a test for every fix.
 
 ## Findings
@@ -60,4 +60,4 @@ Severity: critical / high / medium / low. No high or critical may remain open.
 - [ ] Accessibility and reduced motion checked.
 - [ ] Security headers, rate limits, and audit coverage checked.
 
-Next: `prompts/09-FINAL-TEST.md` → `docs/discovery/09-release-report.md`
+Next: `agent-prompts/09-FINAL-TEST.md` → `docs/discovery/09-release-report.md`

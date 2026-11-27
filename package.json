@@ -23,6 +23,7 @@
     "test:e2e": "npm run test:e2e --workspace @hexa/web",
     "security:audit": "npm audit --omit=dev --audit-level=high",
     "release:check": "node scripts/release-check.mjs",
+    "prepare:submission": "node scripts/prepare-submission.mjs",
     "format": "prettier --write \"**/*.{ts,tsx,js,mjs,cjs,json,css,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,cjs,json,css,yml,yaml}\"",
     "setup": "node scripts/setup.mjs",

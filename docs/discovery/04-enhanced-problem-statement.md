@@ -1,6 +1,6 @@
 # 04 — Enhanced problem statement
 
-> Phase 04 · 1:45–2:15 · Source: `prompts/04-ENHANCE-PROBLEM-STATEMENT.md`
+> Phase 04 · 1:45–2:15 · Source: `agent-prompts/04-ENHANCE-PROBLEM-STATEMENT.md`
 > Turn the brief into a scoped, testable product definition. Every requirement must be testable and
 > fit the ten-hour budget.
 
@@ -112,4 +112,4 @@ As a ..., I want ..., so that ...
 - [ ] The demo narrative is one clear flow.
 - [ ] The cut line is explicit.
 
-Next: `prompts/05-SOLUTION-DESIGN.md` → `docs/discovery/05-solution-design.md`
+Next: `agent-prompts/05-SOLUTION-DESIGN.md` → `docs/discovery/05-solution-design.md`

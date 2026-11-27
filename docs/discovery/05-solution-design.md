@@ -1,6 +1,6 @@
 # 05 — Solution design
 
-> Phase 05 · 2:15–3:00 · Source: `prompts/05-SOLUTION-DESIGN.md`
+> Phase 05 · 2:15–3:00 · Source: `agent-prompts/05-SOLUTION-DESIGN.md`
 > This artifact unblocks product code. Do not start Phase 07 until every requirement maps to a
 > component, every must-handle edge case has a design, and no blocking question is open.
 
@@ -106,4 +106,4 @@ All sends go through the outbox with an idempotency key. No inline sends in requ
 - [ ] Every email event is in the outbox catalog.
 - [ ] No blocking question remains.
 
-Next: `prompts/06-VISUAL-DIRECTION.md` → `docs/discovery/06-visual-direction.md`
+Next: `agent-prompts/06-VISUAL-DIRECTION.md` → `docs/discovery/06-visual-direction.md`

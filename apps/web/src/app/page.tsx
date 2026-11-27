@@ -192,7 +192,7 @@ export default function HomePage() {
                   <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
                     Next
                   </dt>
-                  <dd className="font-mono text-xs text-fg">prompts/MASTER-WORKFLOW.md</dd>
+                  <dd className="font-mono text-xs text-fg">agent-prompts/MASTER-WORKFLOW.md</dd>
                 </div>
                 <div className="grid grid-cols-[6.5rem_1fr] gap-4 px-5 py-3.5">
                   <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
