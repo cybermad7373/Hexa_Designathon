@@ -13,8 +13,6 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
-      // Only enforce coverage on modules with unit tests. New library/server
-      // modules must be paired with a test before they are added here.
       include: [
         "src/lib/rate-limit.ts",
         "src/lib/load-balancer.ts",

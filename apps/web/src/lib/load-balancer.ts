@@ -182,7 +182,7 @@ export class LoadBalancer {
   /** Run one health check cycle across all backends (public for ops/on-demand checks). */
   async checkHealth(check: (url: string) => Promise<boolean>): Promise<void> {
     const now = Date.now();
-    const results = await Promise.allSettled(
+    const results = await Promise.all(
       this.order.map(async (id) => {
         const backend = this.backends.get(id)!;
         let ok = false;
@@ -203,17 +203,13 @@ export class LoadBalancer {
       }),
     );
 
-    for (const result of results) {
-      if (result.status !== "fulfilled") continue;
-      const { id, healthy } = result.value;
+    for (const { id, healthy } of results) {
       const backend = this.backends.get(id);
       if (!backend) continue;
 
       if (healthy) {
         backend.consecutiveFailures = 0;
-        if (backend.consecutiveFailures < this.options.unhealthyThreshold) {
-          backend.healthy = true;
-        }
+        backend.healthy = true;
       } else {
         backend.consecutiveFailures += 1;
         if (backend.consecutiveFailures >= this.options.unhealthyThreshold) {
@@ -241,7 +237,6 @@ export class LoadBalancer {
   }
 
   private selectWeightedRoundRobin(healthy: Backend[]): Backend | null {
-    if (healthy.length === 0) return null;
     const maxWeight = Math.max(...healthy.map((b) => b.weight));
     if (maxWeight === 0) return healthy[0] ?? null;
 
@@ -251,7 +246,6 @@ export class LoadBalancer {
         this.wrrCurrentWeight -= 1;
         if (this.wrrCurrentWeight <= 0) {
           this.wrrCurrentWeight = maxWeight;
-          if (this.wrrCurrentWeight <= 0) return healthy[0] ?? null;
         }
       }
       const backend = healthy[this.wrrIndex]!;

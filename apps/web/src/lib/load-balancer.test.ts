@@ -130,14 +130,16 @@ describe("LoadBalancer", () => {
     expect(lb.select()!.id).toBe("a");
   });
 
-  it("startHealthChecks is idempotent and stopHealthChecks clears the timer", () => {
-    const lb = new LoadBalancer([makeBackend("a", "http://a")]);
+  it("startHealthChecks is idempotent and stopHealthChecks clears the timer", async () => {
+    vi.useFakeTimers();
+    const lb = new LoadBalancer([makeBackend("a", "http://a")], { healthCheckIntervalMs: 100 });
     const check = vi.fn(async () => true);
     lb.startHealthChecks(check);
-    lb.startHealthChecks(check); // no-op, timer not duplicated
-    expect(lb.select()!.id).toBe("a");
+    lb.startHealthChecks(check); // no-op
+    await vi.advanceTimersByTimeAsync(250);
     lb.stopHealthChecks();
-    expect(lb.select()!.id).toBe("a");
+    expect(check).toHaveBeenCalled();
+    vi.useRealTimers();
   });
 
   it("health check catch path marks backend unhealthy on exception", async () => {
@@ -152,8 +154,101 @@ describe("LoadBalancer", () => {
     expect(lb.getStats()[0]!.healthy).toBe(false);
   });
 
+  it("setHealth returns false for missing backend", () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")]);
+    expect(lb.setHealth("missing", true)).toBe(false);
+  });
+
+  it("dispatch and complete ignore missing backend", () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")]);
+    lb.dispatch("missing");
+    lb.complete("missing", true);
+    expect(lb.getStats()[0]!.totalRequests).toBe(0);
+  });
+
+  it("weighted-round-robin falls back when all weights are zero", () => {
+    const lb = new LoadBalancer(
+      [makeBackend("a", "http://a", 0), makeBackend("b", "http://b", 0)],
+      { strategy: "weighted-round-robin" },
+    );
+    expect(lb.select()).not.toBeNull();
+  });
+
+  it("weighted-round-robin with single backend", () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a", 2)], {
+      strategy: "weighted-round-robin",
+    });
+    expect(lb.select()!.id).toBe("a");
+    expect(lb.select()!.id).toBe("a");
+  });
+
+  it("health check timeout marks backend unhealthy", async () => {
+    vi.useFakeTimers();
+    const lb = new LoadBalancer([makeBackend("a", "http://a")], {
+      strategy: "round-robin",
+      healthCheckTimeoutMs: 50,
+      unhealthyThreshold: 1,
+    });
+    const check = vi.fn(() => new Promise<boolean>(() => undefined));
+    const p = lb.checkHealth(check);
+    await vi.advanceTimersByTimeAsync(60);
+    await p;
+    expect(lb.getStats()[0]!.healthy).toBe(false);
+    vi.useRealTimers();
+  });
+
+  it("health check recovers backend on success", async () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")], {
+      strategy: "round-robin",
+      unhealthyThreshold: 1,
+    });
+    await lb.checkHealth(async () => false);
+    expect(lb.getStats()[0]!.healthy).toBe(false);
+    await lb.checkHealth(async () => true);
+    expect(lb.getStats()[0]!.healthy).toBe(true);
+  });
+
   it("updateWeight returns false for missing", () => {
     const lb = new LoadBalancer([makeBackend("a", "http://a")]);
     expect(lb.updateWeight("missing", 5)).toBe(false);
+  });
+
+  it("stopHealthChecks is safe before start", () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")]);
+    expect(() => lb.stopHealthChecks()).not.toThrow();
+    expect(lb.select()!.id).toBe("a");
+  });
+
+  it("setHealth false preserves accumulated failures", async () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")], { unhealthyThreshold: 5 });
+    await lb.checkHealth(async () => false);
+    expect(lb.getStats()[0]!.healthy).toBe(true);
+    expect(lb.setHealth("a", false)).toBe(true);
+    expect(lb.getStats()[0]!.healthy).toBe(false);
+  });
+
+  it("least-connections skips a backend with more active requests", () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a"), makeBackend("b", "http://b")], {
+      strategy: "least-connections",
+    });
+    lb.dispatch("b");
+    expect(lb.select()!.id).toBe("a");
+  });
+
+  it("factory accepts options", () => {
+    const lb = createLoadBalancer([makeBackend("a", "http://a"), makeBackend("b", "http://b")], {
+      strategy: "least-connections",
+    });
+    lb.dispatch("a");
+    expect(lb.select()!.id).toBe("b");
+  });
+
+  it("health check skips a backend removed during the probe", async () => {
+    const lb = new LoadBalancer([makeBackend("a", "http://a")]);
+    await lb.checkHealth(async () => {
+      lb.removeBackend("a");
+      return true;
+    });
+    expect(lb.getStats()).toEqual([]);
   });
 });
