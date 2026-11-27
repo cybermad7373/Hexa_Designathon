@@ -13,6 +13,7 @@ const steps = [
   { id: "lint", label: "Lint", args: ["run", "lint"] },
   { id: "typecheck", label: "Typecheck", args: ["run", "typecheck"] },
   { id: "unit", label: "Unit tests", args: ["run", "test"] },
+  { id: "coverage", label: "Unit test coverage (>= 95%)", args: ["run", "test:coverage"] },
   {
     id: "build",
     label: "Production build",

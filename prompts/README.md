@@ -55,6 +55,11 @@ If a skill is unavailable, follow `docs/DESIGN-SYSTEM.md` and say which fallback
 - RBAC roles, permissions, escalation guards, and the last-owner rule are designed in phase 05.
 - Email events, templates, preferences, suppression, and failure states are designed in phase 05.
 - The final test window is protected. Freeze features at T-60.
+- Unit tests pass 100% with zero skipped or flaky and >= 95% coverage on every tested module.
+- Produce the four scored deliverables: repo link, slide deck, 3–5 minute video, and a <= 1000 word
+  architecture abstract. Details in `docs/EVALUATION-CHECKLIST.md`.
+- Confirm the website delivery gate at each phase boundary in `docs/WEBSITE-DELIVERY-STATUS.md`.
+  Items are `Done`, `N/A - reason`, or `Blocked`, each with evidence. No ticking from intent.
 - Do not commit or push unless the user explicitly asks.
 
 ## Timeboxes

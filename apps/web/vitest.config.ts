@@ -15,7 +15,12 @@ export default defineConfig({
       reporter: ["text", "html"],
       // Only enforce coverage on modules with unit tests. New library/server
       // modules must be paired with a test before they are added here.
-      include: ["src/lib/rate-limit.ts", "src/lib/errors.ts", "src/server/auth/rbac.ts"],
+      include: [
+        "src/lib/rate-limit.ts",
+        "src/lib/load-balancer.ts",
+        "src/lib/errors.ts",
+        "src/server/auth/rbac.ts",
+      ],
       exclude: ["**/*.test.ts"],
       thresholds: {
         statements: 95,

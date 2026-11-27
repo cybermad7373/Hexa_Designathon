@@ -28,6 +28,10 @@ Product naming is decided only after the brief is reviewed. See
 
 Supporting assets live in `docs/discovery/assets/` (reference images, screenshots, diagrams).
 
+Each phase also confirms the applicable items in `docs/WEBSITE-DELIVERY-STATUS.md` with evidence.
+The four scored deliverables and the 95% test line are tracked in `docs/EVALUATION-CHECKLIST.md`.
+Neither is complete until evidence is linked; a filled template is not progress.
+
 ## Rules
 
 - The raw brief is preserved verbatim in `00-problem-statement.md`. Do not edit it later; add notes

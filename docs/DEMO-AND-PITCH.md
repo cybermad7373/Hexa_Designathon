@@ -107,6 +107,16 @@ Copy the event's rubric here and map each criterion to evidence:
 | Technical   |        | Architecture, security, scale, release report |
 | Demo        |        | Rehearsed script, fallback, Q&A               |
 
+The scored submission has four deliverables. Treat the table below as the evaluator's view of the
+repo, not as extra work after the demo:
+
+| Deliverable | Accepted format | Evaluation purpose | Our evidence |
+| --- | --- | --- | --- |
+| Repository link | `https://github.com/organization/repo` | Source inspection, commit history, documentation quality, unit test coverage | Fresh-clone build, release report, `docs/EVALUATION-CHECKLIST.md` |
+| Slide deck | Google Slides, Canva, OneDrive, PDF link | Business value, architecture, competitive advantage, roadmap | Deck link and slide count |
+| Video demo | Loom, YouTube, Google Drive link | 3–5 minute walkthrough of working functionality and key user flows | URL, duration, flow list |
+| Architecture abstract | Formatted text, <= 1000 words | Problem, technological innovations, system design | Word count and file or link |
+
 ## Rehearsal checklist
 
 - [ ] Rehearsal one timed end to end.

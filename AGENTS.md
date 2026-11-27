@@ -105,8 +105,18 @@ plain chat with a free model. Adapt, do not stall:
    Every action has pending, success, and failure feedback. No dead buttons.
 10. **Email is durable and safe.** Enqueue through the outbox, never inline. Escape variables, strip
     CRLF from subjects, allow only http(s) links, and check preferences and suppression.
-11. **Tests protect the demo.** Unit tests for domain logic, RBAC, email rendering, an e2e golden path,
-    and the release gate before the pitch.
+11. **Tests protect the demo.** Unit tests for domain logic, RBAC, email rendering, rate limiting,
+    load balancing, an e2e golden path, and the release gate before the pitch. `npm run test:coverage`
+    is a hard gate: 100% pass, zero skipped or flaky, and >= 95% statements, branches, functions, and
+    lines on every tested module. No exclusion or waiver to reach the number.
+12. **Evaluate like the judge.** Produce the four scored deliverables: a GitHub repo with clean history
+    and documentation, a slide deck (business value, architecture, competitive advantage, roadmap),
+    a 3–5 minute demo video, and a <= 1000 word architecture abstract. Evidence in
+    `docs/EVALUATION-CHECKLIST.md`.
+13. **Confirm the website delivery gate while building.** Select a profile at intake and mark each
+    applicable item `Done`, `N/A - reason`, or `Blocked` with an evidence link in
+    `docs/WEBSITE-DELIVERY-STATUS.md`. Never tick from intent. The studio's `release-readiness.md`
+    gate stays mandatory for any public launch; the owner signs.
 
 ## Commands
 
@@ -121,6 +131,7 @@ plain chat with a free model. Adapt, do not stall:
 | `npm run lint`          | ESLint                                               |
 | `npm run typecheck`     | TypeScript, no emit                                  |
 | `npm run test`          | Vitest unit tests                                    |
+| `npm run test:coverage` | Vitest unit tests with enforced 95% thresholds       |
 | `npm run test:e2e`      | Playwright golden-path and smoke tests               |
 | `npm run build`         | Production build                                     |
 | `npm run check`         | Format + lint + typecheck + unit tests + build       |

@@ -20,6 +20,22 @@ Submit with buffer. Portals fail, uploads stall, and links break.
 - [ ] No `.env`, secrets, or real customer data in git history.
 - [ ] `.env.example` lists every required variable.
 - [ ] The repo builds from a fresh clone.
+- [ ] `npm run test:coverage`: 100% pass and >= 95% on statements, branches, functions, lines.
+- [ ] Commit history is meaningful; the submission commit matches the tested commit.
+- [ ] `docs/EVALUATION-CHECKLIST.md` has no unexplained unchecked item.
+- [ ] `docs/WEBSITE-DELIVERY-STATUS.md` has a profile and evidence for every applicable item, or an
+      explicit `Blocked` record with owner and date.
+
+## T-30: scored deliverables
+
+- [ ] GitHub repository link points to the public repo.
+- [ ] Presentation slide deck link (Google Slides, Canva, OneDrive, or PDF) explains business value,
+      architecture, competitive advantage, and roadmap.
+- [ ] Video demo URL (Loom, YouTube, or Google Drive) is 3–5 minutes and shows working functionality
+      and key user flows.
+- [ ] Solution architecture abstract is formatted text, <= 1000 words, covering the problem,
+      technological innovations, and system design.
+- [ ] Every link opens from a clean browser session before submission.
 
 ## T-30: deploy
 
