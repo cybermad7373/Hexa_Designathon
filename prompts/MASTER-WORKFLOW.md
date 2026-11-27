@@ -26,16 +26,27 @@ the artifact instead.
     typeface, palette and logo rules in `docs/BRAND.md`. No off-palette color ships.
 11. **Protect the context budget.** Read only the current phase prompt and its artifact; link to
     standards instead of pasting them; keep each artifact under ~150 lines.
+12. **Hold the test line.** Unit tests must pass at 100% with zero skipped or flaky tests, and line,
+    branch, function, and statement coverage must stay at or above 95% on every file with unit
+    tests. A new module ships with its test or it does not ship.
+13. **Confirm the website delivery gate at every phase boundary.** Mark each applicable item
+    `Done`, `N/A - reason`, or `Blocked` in `docs/WEBSITE-DELIVERY-STATUS.md` with an evidence link.
+    Never tick from intent, from reading code, or from memory.
+14. **Build for the evaluator.** Every scored deliverable below is produced and checked before
+    submission. A claim without a receipt does not count.
 
 ## Start sequence
 
-1. Read `AGENTS.md`, `docs/PLAYBOOK-10H.md`, and `docs/QUALITY-BAR.md`.
+1. Read `AGENTS.md`, `docs/PLAYBOOK-10H.md`, `docs/QUALITY-BAR.md`, and
+   `docs/EVALUATION-CHECKLIST.md`.
 2. Put the raw brief in `docs/discovery/00-problem-statement.md` verbatim.
-3. Run phases 00 → 10 below in order.
-4. After each phase, print the response block and move on only if the gate passes.
-5. Keep the build log current from phase 07 onward.
-6. At T-60, stop feature work and run phase 09.
-7. At T-30, deploy and smoke. At T-20, rehearse. Submit with buffer.
+3. Select the website delivery profile (`docs/WEBSITE-DELIVERY-STATUS.md`).
+4. Run phases 00 → 10 below in order.
+5. After each phase, print the response block and update `docs/WEBSITE-DELIVERY-STATUS.md` with
+   evidence for the sections that phase confirms. Move on only if the gate passes.
+6. Keep the build log current from phase 07 onward.
+7. At T-60, stop feature work and run phase 09.
+8. At T-30, deploy and smoke. At T-20, rehearse. Submit with buffer.
 
 ## Problem statement
 
@@ -98,11 +109,49 @@ If the problem statement is missing, ask for it and stop. Do not invent one.
 
 ### Testing
 
-- Unit tests for domain rules, validation, and error mapping.
+- Unit tests for domain rules, validation, error mapping, RBAC, email rendering, rate limiting, and
+  load balancing.
+- `npm run test:coverage` holds statements, branches, functions, and lines at **>= 95%** on every
+  file with unit tests. All tests pass; zero skipped, zero flaky, no `.only` or `.skip`.
+- Add no module to the coverage include list without a test. Do not add exclusions to reach 95%.
 - E2E for the golden path.
-- Release gate before the demo: format, lint, typecheck, unit, build, e2e, audit, deployed smoke.
+- Release gate before the demo: format, lint, typecheck, unit, coverage, build, e2e, audit,
+  deployed smoke.
 - The final 60 minutes are protected. Fix blockers only.
-- Full standard: `docs/TESTING.md`.
+- Full standards: `docs/TESTING.md` and `docs/EVALUATION-CHECKLIST.md`.
+
+### Website delivery gate
+
+- Source: `docs/WEBSITE-DELIVERY-CHECKLIST.md`; live record: `docs/WEBSITE-DELIVERY-STATUS.md`.
+- Select one profile at phase 00: Public / B2C, Corporate / B2B, or Both. Mark conditional sections
+  `N/A - reason` with a reason that names why they cannot apply.
+- Confirm the applicable sections during the build, not at the last minute. Each item needs an
+  evidence link: URL, screenshot, command and output, config record, or scan report.
+- Treat the studio's `release-readiness.md` gate as mandatory for any public launch. An agent may
+  fill the record; the owner signs it.
+- A critical failure is `Blocked`, never a known issue. A new domain, auth flow, payment flow,
+  region, data category, or major UI release re-opens the affected sections.
+
+### Submission and evaluation contract
+
+Produce and verify all four scored deliverables. An AI evaluator or a human will inspect them.
+
+| Deliverable | Accepted format | Evaluation purpose |
+| --- | --- | --- |
+| GitHub repository link | `https://github.com/organization/repo` | Source code inspection, commit history, documentation quality, unit test coverage |
+| Presentation slide deck | Google Slides, Canva, OneDrive, or PDF link | Pitch deck explaining business value, architecture, competitive advantage, and roadmap |
+| Video demo URL | Loom, YouTube, or Google Drive video link | 3–5 minute recorded product walkthrough demonstrating working functionality and key user flows |
+| Solution architecture abstract | Formatted text, up to 1000 words | Executive summary of the problem addressed, technological innovations, and system design |
+
+- Keep the abstract under 1000 words. Do not pad it with claims that have no receipt.
+- Keep the video between 3 and 5 minutes. Show working functionality and the key user flows,
+  not a slide read-aloud.
+- Make the repo legible to a machine: standard file paths, a README that matches the product,
+  `artifacts/release-report.json`, and one evidence link per claim.
+- Additional evaluator checks: fresh-clone build, meaningful commit history, no secrets in git
+  history, strict TypeScript, server-side authorization, tenant isolation, WCAG AA, measured
+  performance, all UI states, and a rehearsed fallback. Full list: `docs/EVALUATION-CHECKLIST.md`.
+- Failing any scored deliverable or the 95% test line blocks submission. Do not waive silently.
 
 ---
 
@@ -117,12 +166,14 @@ Do:
   flags, and success signals.
 - Write a one-sentence restatement.
 - Ask at most three blocking questions. If they are not truly blocking, record assumptions instead.
+- Select and justify the website delivery profile (Public / B2C, Corporate / B2B, Both) in
+  `docs/WEBSITE-DELIVERY-STATUS.md`. Record the product class and the owner.
 - Do not propose a solution.
 
 Output: `docs/discovery/00-problem-statement.md`.
 
-Gate: the brief is captured, requirements and constraints are separated, unknowns are listed, and no
-solution has been proposed.
+Gate: the brief is captured, requirements and constraints are separated, unknowns are listed, the
+delivery profile is selected, and no solution has been proposed.
 
 ---
 
@@ -208,11 +259,13 @@ Do:
 - Make every metric measurable in the demo or explicitly labeled as a target.
 - Check 10-hour feasibility. If not feasible, cut scope now.
 - Map each requirement to a future component and test.
+- Decide which conditional D modules apply. Mark the rest `N/A - reason` in
+  `docs/WEBSITE-DELIVERY-STATUS.md`.
 
 Output: `docs/discovery/04-enhanced-problem-statement.md`.
 
-Gate: every requirement is testable, scope fits the timebox, metrics are measurable, and the demo
-narrative is one clear flow.
+Gate: every requirement is testable, scope fits the timebox, metrics are measurable, the demo
+narrative is one clear flow, and conditional modules are decided.
 
 ---
 
@@ -237,6 +290,8 @@ Do:
 - Define the test strategy and the vertical slices with time estimates.
 - Maintain a risk register with the top five risks.
 - Map every requirement and edge case to a component and a test.
+- Write the data inventory, retention, tenant isolation, backup, and incident path needed by
+  A8 and C2–C3 of the website delivery gate, with a reference in `docs/WEBSITE-DELIVERY-STATUS.md`.
 
 Output: `docs/discovery/05-solution-design.md` plus any ADRs.
 
@@ -314,10 +369,13 @@ Rules:
 - Every list is paginated and indexed.
 - Every data view has loading, empty, error, and unauthorized states.
 - No secrets in the client bundle.
+- Confirm A1–A3, B2 (if applicable), and C4 of the website delivery gate for each slice as it
+  becomes real. Link evidence in `docs/WEBSITE-DELIVERY-STATUS.md`; do not pre-tick.
 
 Output: working code plus `docs/discovery/07-build-log.md`.
 
-Gate: the golden path works end to end locally with seeded data.
+Gate: the golden path works end to end locally with seeded data, and the build-phase delivery items
+have evidence.
 
 ---
 
@@ -336,11 +394,14 @@ Do:
 - Accessibility: keyboard, focus, contrast, labels, reduced motion.
 - Performance: LCP, INP, CLS, bundle, images.
 - UX states: every view and action.
-- Add a test for every fix.
+- Add a test for every fix. The 95% coverage line still holds after the fix.
+- Confirm A5–A9, B1–B3 (if applicable), and C1–C4 of the website delivery gate. Attach the scan,
+  command output, or screenshot to `docs/WEBSITE-DELIVERY-STATUS.md`.
 
 Output: `docs/discovery/08-hardening-report.md` with findings, fixes, and remaining risks.
 
-Gate: no high or critical findings; mediums are documented with a mitigation.
+Gate: no high or critical findings; mediums are documented with a mitigation; the hardening-phase
+delivery items have evidence.
 
 ---
 
@@ -355,19 +416,25 @@ Do:
 
 ```bash
 npm run release:check
+npm run test:coverage
 ```
 
 If Playwright browsers are missing: `npx playwright install chromium`.
 
+- Confirm 100% of unit tests pass and all four coverage metrics are >= 95%. Record the coverage
+  summary in the release report. A coverage waiver is not allowed.
 - Run the manual checks: golden path, empty state, error state, unauthorized state, mobile width,
   keyboard path, contrast.
 - Smoke the deployed URL: home, `/api/health`, demo login, golden path, and one email delivery or the
   documented Mailpit fallback.
+- Confirm A10 and the final E items of the website delivery gate: HTTPS, headers, legal and support
+  links, rollback, and launch smoke. Attach evidence to `docs/WEBSITE-DELIVERY-STATUS.md`.
 - Play the fallback recording once.
 - Write `docs/discovery/09-release-report.md` with evidence and any waivers.
 - Fix only blockers, then re-run the affected checks. No refactors.
 
-Gate: all required checks pass, or a waiver is recorded with reason, risk, and owner.
+Gate: all required checks pass, the 95% test line holds, and no waived check is a scored deliverable
+or a critical website delivery item.
 
 ---
 
@@ -384,12 +451,18 @@ Do:
 - Record a 2–3 minute fallback of the golden path on the frozen build.
 - Prepare answers to the ten questions in `docs/DEMO-AND-PITCH.md`.
 - Map the event's judging criteria to evidence.
+- Produce and verify the four scored deliverables in the submission and evaluation contract: repo
+  link, slide deck (PDF or share link), 3–5 minute video, and the <= 1000 word architecture abstract.
+  Record their locations in `docs/discovery/10-demo-script.md`.
+- Complete section E of `docs/WEBSITE-DELIVERY-STATUS.md`: profile, gate state, release version, date,
+  evidence links, and owner sign-off. No `Passed` without evidence on every applicable item.
 - Rehearse twice. Time it. Fix only demo blockers.
 - Submit with buffer.
 
 Output: `docs/discovery/10-demo-script.md` plus the fallback recording.
 
-Gate: the demo works from a cold start, is rehearsed twice, and the fallback is playable.
+Gate: the demo works from a cold start, is rehearsed twice, the fallback is playable, all four
+deliverables exist and open, and the delivery gate is signed or explicitly `Blocked`.
 
 ---
 

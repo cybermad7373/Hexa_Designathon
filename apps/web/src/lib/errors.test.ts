@@ -49,4 +49,11 @@ describe("toPublicError", () => {
 
     expect(result.body.error).not.toHaveProperty("requestId");
   });
+
+  it("includes request id on internal errors", () => {
+    const result = toPublicError(new Error("boom"), "req_999");
+
+    expect(result.status).toBe(500);
+    expect(result.body.error.requestId).toBe("req_999");
+  });
 });

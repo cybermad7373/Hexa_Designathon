@@ -52,6 +52,10 @@ describe("RBAC permission matrix", () => {
     );
   });
 
+  it("allows assertCan when role has permission", () => {
+    expect(() => assertCan("OWNER", "workspace:delete")).not.toThrow();
+  });
+
   it("orders roles from viewer to owner", () => {
     expect(roleAtLeast("OWNER", "ADMIN")).toBe(true);
     expect(roleAtLeast("ADMIN", "ADMIN")).toBe(true);
@@ -80,6 +84,11 @@ describe("role escalation guards", () => {
     expect(() => assertCanAssignRole("ADMIN", "ADMIN")).toThrow(AppError);
   });
 
+  it("allows assertCanAssignRole when permitted", () => {
+    expect(() => assertCanAssignRole("OWNER", "ADMIN")).not.toThrow();
+    expect(() => assertCanAssignRole("ADMIN", "MEMBER")).not.toThrow();
+  });
+
   it("protects the last owner from removal", () => {
     expect(canRemoveMember("OWNER", "OWNER", 1)).toBe(false);
     expect(canRemoveMember("OWNER", "OWNER", 2)).toBe(true);
@@ -92,5 +101,13 @@ describe("role escalation guards", () => {
     expect(canRemoveMember("ADMIN", "ADMIN", 1)).toBe(false);
     expect(canRemoveMember("ADMIN", "OWNER", 2)).toBe(false);
     expect(canRemoveMember("MEMBER", "VIEWER", 1)).toBe(false);
+  });
+
+  it("assertCanRemoveMember throws for unauthorized removal", () => {
+    expect(() => assertCanRemoveMember("MEMBER", "VIEWER", 1)).toThrow(AppError);
+  });
+
+  it("assertCanRemoveMember allows authorized removal", () => {
+    expect(() => assertCanRemoveMember("ADMIN", "MEMBER", 1)).not.toThrow();
   });
 });

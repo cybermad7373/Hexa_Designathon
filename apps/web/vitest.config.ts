@@ -13,8 +13,16 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
-      include: ["src/lib/**/*.ts"],
-      exclude: ["src/lib/env.ts", "src/lib/logger.ts", "src/lib/**/*.test.ts"],
+      // Only enforce coverage on modules with unit tests. New library/server
+      // modules must be paired with a test before they are added here.
+      include: ["src/lib/rate-limit.ts", "src/lib/errors.ts", "src/server/auth/rbac.ts"],
+      exclude: ["**/*.test.ts"],
+      thresholds: {
+        statements: 95,
+        branches: 95,
+        functions: 95,
+        lines: 95,
+      },
     },
   },
 });

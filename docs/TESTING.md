@@ -13,7 +13,21 @@ golden path plus regression safety on the rules that are expensive to break.
 | Smoke       | Deployed URL, health, critical assets                 | Playwright / curl | 10 min |
 | Manual      | A11y, visual states, copy, edge cases                 | Checklist  | 20 min      |
 
-Do not chase coverage percentages. Cover the rules that would embarrass the demo.
+Cover the rules that would embarrass the demo first, then close the gap to the hard 95% line.
+
+## The 95% test line
+
+This is a release gate, not a target. It applies to `npm run test:coverage`.
+
+- 100% of collected unit tests pass. Zero failures, zero skipped, zero flaky, no `.only` or `.skip`.
+- Statements, branches, functions, and lines are each **>= 95%** on every file with unit tests.
+- Thresholds are enforced in `apps/web/vitest.config.ts`. The include list names only files that
+  have tests; a new tested module is added to it in the same change as its test.
+- Do not add an exclusion, a waiver, or a trivial test solely to reach the number. A file below the
+  line blocks the release.
+- Record the coverage summary and commit id in `docs/discovery/09-release-report.md`.
+
+Full evaluator checklist: `docs/EVALUATION-CHECKLIST.md`.
 
 ## What must be tested
 
@@ -129,6 +143,7 @@ T-60 means T-60. Freeze features. No refactors.
 | T-60   | Announce freeze. Merge to one deployable branch.                    | Lead     |
 | T-58   | `npm run format:check && npm run lint && npm run typecheck`         | Engineer |
 | T-52   | `npm run test`                                                      | Engineer |
+| T-50   | `npm run test:coverage` — 100% pass, >= 95% on all four metrics      | Engineer |
 | T-48   | `npm run build`                                                     | Engineer |
 | T-40   | `npm run test:e2e`                                                  | Engineer |
 | T-30   | Deploy the frozen build; smoke home, health, and the golden path    | Engineer |
@@ -164,6 +179,7 @@ Write to `docs/discovery/09-release-report.md`:
 | Lint | | |
 | Typecheck | | |
 | Unit | | |
+| Coverage (>= 95%) | | |
 | Build | | |
 | E2E | | |
 | Audit | | |

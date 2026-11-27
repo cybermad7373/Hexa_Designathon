@@ -49,6 +49,13 @@ constraints active.
 - Every data view has loading, empty, error, and unauthorized states.
 - Email goes through the outbox; never inline.
 - No secrets in the client bundle.
+- Unit tests pass at 100% and coverage stays >= 95% on every tested module.
+
+## Website delivery confirmation
+
+As each slice becomes real, confirm A1–A3, B2 (if applicable), and C4 from
+`docs/WEBSITE-DELIVERY-CHECKLIST.md`. Mark each item `Done`, `N/A - reason`, or `Blocked` with an
+evidence link in `docs/WEBSITE-DELIVERY-STATUS.md`. Do not tick a slice that does not exist yet.
 
 ## Output structure
 
@@ -83,7 +90,8 @@ constraints active.
 - RBAC is enforced on the golden path.
 - At least one golden-path email is queued and delivered to Mailpit.
 - The build log is current.
-- Lint, typecheck, and unit tests are green.
+- Lint, typecheck, unit tests, and `npm run test:coverage` are green at >= 95%.
+- Build-phase website delivery items are confirmed with evidence.
 
 ## Response block
 

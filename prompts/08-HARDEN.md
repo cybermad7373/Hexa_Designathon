@@ -58,6 +58,14 @@
 ### Tests
 
 - Add a test for every fix. Do not leave a security or email fix untested.
+- Re-run `npm run test:coverage`. The 95% line must still hold.
+
+### Website delivery confirmation
+
+- Confirm A5–A9, B1–B3 (if applicable), and C1–C4 from
+  `docs/WEBSITE-DELIVERY-CHECKLIST.md`.
+- Attach the scan, command output, or screenshot to `docs/WEBSITE-DELIVERY-STATUS.md`.
+- Mark inapplicable items `N/A - reason`, where the reason names why the item cannot apply.
 
 ## Output structure
 
@@ -91,8 +99,9 @@
 
 - No high or critical findings.
 - Mediums are documented with a mitigation.
-- Every fix has a test.
+- Every fix has a test and coverage is still >= 95%.
 - No new features were added.
+- Hardening-phase website delivery items are confirmed with evidence.
 
 ## Response block
 

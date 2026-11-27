@@ -12,7 +12,12 @@ At T-60, stop feature work. Merge or park branches. One branch must be deployabl
 
 ```bash
 npm run release:check
+npm run test:coverage
 ```
+
+The test line is hard: 100% of unit tests pass, zero skipped or flaky, and statements, branches,
+functions, and lines are each >= 95% on every tested module. Record the coverage summary as evidence.
+No coverage waiver is accepted.
 
 If Playwright browsers are missing:
 
@@ -41,6 +46,13 @@ npx playwright install chromium
 - One email is delivered, or the documented Mailpit fallback is shown.
 - Security headers are present.
 
+## Website delivery confirmation
+
+- Confirm A10 and the final E items from `docs/WEBSITE-DELIVERY-CHECKLIST.md`: HTTPS, headers, legal
+  and support links live, rollback path, and launch smoke.
+- Attach evidence to `docs/WEBSITE-DELIVERY-STATUS.md`. Mark anything unverifiable `Blocked`, never
+  `Done` from intent.
+
 ## Fallback
 
 - Play the fallback recording once.
@@ -58,7 +70,9 @@ Write `docs/discovery/09-release-report.md` with:
 ## Gate
 
 - All required checks pass, or a waiver is recorded with reason, risk, and owner.
+- Unit tests pass at 100% and coverage is >= 95% on every tested module. No waiver.
 - The release report is written.
+- A10 and E of the website delivery gate have evidence.
 - No feature work happened after the freeze.
 
 ## Response block
