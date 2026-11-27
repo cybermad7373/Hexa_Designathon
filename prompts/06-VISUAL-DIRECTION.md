@@ -17,14 +17,20 @@
 
 If a skill is unavailable, follow `docs/DESIGN-SYSTEM.md` and state the fallback.
 
+## Brand lock
+
+Read `docs/BRAND.md` before anything else. The palette, typeface (Manrope, weights 300–600), and logo
+usage are fixed. Copy the tokens into the artifact; do not invent hex values, gradients, or a
+second accent. Layout, imagery, and motion are the decisions this phase earns.
+
 ## Do
 
 1. Write the design read:
    > Reading this as: **\<page kind>** for **\<audience>**, with a **\<vibe>** language, leaning
    > toward **\<design system or aesthetic family>**.
 2. Set the dials: `DESIGN_VARIANCE`, `MOTION_INTENSITY`, `VISUAL_DENSITY`.
-3. Define tokens:
-   - color, with one accent and contrast ratios;
+3. Define tokens from `docs/BRAND.md`:
+   - color roles and contrast ratios;
    - type scale and families;
    - spacing scale;
    - radius rule;

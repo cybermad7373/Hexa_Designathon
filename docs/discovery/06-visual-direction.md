@@ -3,6 +3,8 @@
 > Phase 06 · 3:00–3:30 · Source: `prompts/06-VISUAL-DIRECTION.md`
 > Lock the visual system before building UI. Load `design-taste-frontend` with the skill tool, plus
 > one reference skill (`imagegen-frontend-web` or `imagegen-frontend-mobile`).
+> Brand lock: palette, typeface, and logo rules come from `docs/BRAND.md`. Record roles; never invent
+> hex values or a second accent.
 
 ## Design read
 
@@ -26,17 +28,28 @@
 
 | Token | Value | Use |
 | ----- | ----- | --- |
-|       |       |     |
+| `canvas` | `#F8F8F9` | Page background |
+| `surface` | `#FFFFFF` | Cards and sheets |
+| `surface-2` | `#EEEFF2` | Inset, skeleton, hover |
+| `line` | `#CBD0E5` | Borders and dividers |
+| `fg` | `#040D43` | Primary text |
+| `muted` | `#535983` | Secondary text |
+| `brand` | `#3C2CDA` | Single accent, CTAs, links, focus |
+| `brand-hover` | `#3224BD` | Hover and pressed |
+| `brand-ink` | `#FFFFFF` | Text on the brand fill |
+| `danger` | `#DA2D2C` | Error and destructive states |
 
-One accent. Contrast checked against WCAG AA.
+One accent. Contrast checked against WCAG AA. Dark surfaces, if used, follow `docs/BRAND.md`.
 
 ### Type
 
 | Role | Family | Size | Weight | Tracking |
 | ---- | ------ | ---- | ------ | -------- |
-| Display |    |      |        |          |
-| Body |       |      |        |          |
-| Mono |       |      |        |          |
+| Display | Manrope |  | 300–600 |  |
+| Body | Manrope |  | 400–500 |  |
+| Mono | Geist Mono |  | 400 |  |
+
+No other typeface. No 700 or 800 weights.
 
 ### Spacing and shape
 

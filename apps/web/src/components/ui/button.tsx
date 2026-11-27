@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const variants = {
-  primary: "bg-signal text-signal-ink hover:bg-signal/90",
+  primary: "bg-brand text-brand-ink hover:bg-brand-hover",
   secondary: "border border-line bg-surface text-fg hover:border-muted/50 hover:bg-surface-2",
   ghost: "text-muted hover:bg-surface hover:text-fg",
 } as const;

@@ -45,8 +45,8 @@ Presets:
 | Trust-first / public sector    | 3        | 2      | 5       |
 | Internal tool                  | 4        | 2      | 6       |
 
-The starter app is intentionally dark, typographic, and low-motion. Replace the direction when the
-brief says something different; do not inherit it by accident.
+The starter app is light, typographic, low-motion, and already on brand tokens. Change the direction
+only on purpose; do not drift off brand by accident.
 
 ## 3. Foundation
 
@@ -66,37 +66,44 @@ Define tokens once, then use them everywhere.
 
 ### Color
 
-- One accent. Neutral base. No automatic purple-blue gradients.
-- No pure `#000000` or `#ffffff`; use off-black and off-white.
+The brand is locked. Full palette, roles, contrast pairs, and dark-surface mapping live in
+[BRAND.md](BRAND.md); the app tokens are wired in `apps/web/src/app/globals.css`. Do not invent a
+second accent or an off-palette hex.
+
+- One accent: Hexaware blue `#3C2CDA`. Neutral base. No gradients.
+- No pure `#000000`; text is `#040D43`. Snow `#FFFFFF` is brand-approved as a card surface only,
+  never as the page canvas.
 - One palette temperature per project. Do not mix warm and cool grays.
 - Theme lock: all sections share one theme. No random light section inside a dark page.
 - Contrast: WCAG AA minimum (4.5:1 body, 3:1 large text and UI boundaries).
 
-Starter tokens:
+Brand tokens (light):
 
-| Token         | Value     | Use                              |
-| ------------- | --------- | -------------------------------- |
-| `ink`         | `#08090a` | Page background                  |
-| `surface`     | `#101114` | Cards and panels                 |
-| `surface-2`   | `#15171b` | Raised or inset panels           |
-| `line`        | `#24262c` | Borders and dividers             |
-| `fg`          | `#f2f2ee` | Primary text                     |
-| `muted`       | `#9b9ca3` | Secondary text                   |
-| `signal`      | `#d6ff3f` | Single accent, CTAs, status      |
-| `signal-ink`  | `#101400` | Text on the accent               |
+| Token         | Value     | Use                          |
+| ------------- | --------- | ---------------------------- |
+| `canvas`      | `#F8F8F9` | Page background              |
+| `surface`     | `#FFFFFF` | Cards, sheets                |
+| `surface-2`   | `#EEEFF2` | Inset, skeleton, hover       |
+| `line`        | `#CBD0E5` | Borders and dividers         |
+| `fg`          | `#040D43` | Primary text                 |
+| `muted`       | `#535983` | Secondary text               |
+| `brand`       | `#3C2CDA` | Accent, CTAs, links, focus   |
+| `brand-hover` | `#3224BD` | Hover and pressed            |
+| `brand-ink`   | `#FFFFFF` | Text on the brand fill       |
+| `danger`      | `#DA2D2C` | Error and destructive states |
 
-Replace these when the design read calls for it. Keep the contrast ratios.
+Dark surfaces are defined in [BRAND.md](BRAND.md) and only used when the brief explicitly asks.
 
 ### Type
 
 - Display: 1.05–1.15 line height, tight tracking, max two lines in the hero.
 - Body: 1.5–1.7 line height, max 65ch.
-- Mono: numbers, timestamps, IDs, terminal content, small labels.
-- Default sans: Geist, Outfit, Satoshi, Cabinet Grotesk, or a brand font. Avoid Inter unless the
-  brief asks for neutral/Linear-style.
-- Serif only for genuinely editorial, luxury, or publication briefs, and only with a reason.
-- No mixed-family emphasis inside a headline. Use italic or bold of the same family.
-- Fonts self-hosted via `next/font` or a local package. No `<link>` to Google Fonts.
+- Mono: code, numbers, timestamps, IDs, terminal content, small labels. Never headlines or body.
+- Sans: **Manrope only** (brand face), weights 300–600. No second sans, no serif.
+- No mixed-family emphasis inside a headline. Use italic or a heavier Manrope weight.
+- No 700 or 800 weights: brand rules forbid Bold and Extra-Bold.
+- Fonts self-hosted via `@fontsource-variable/manrope` or `next/font`. No `<link>` to Google
+  Fonts.
 
 ### Spacing and shape
 
@@ -189,7 +196,8 @@ without a visible boundary over an image.
 
 Reject these unless the brief explicitly asks:
 
-- Purple or blue AI gradients as the default identity.
+- Purple or blue AI gradients as the default identity. Flat brand blue is required; gradients are
+  not.
 - Centered hero over a dark mesh with three equal feature cards.
 - Glassmorphism on everything.
 - Eyebrow above every section.
@@ -254,7 +262,8 @@ Email is part of the product surface. It must look like the app, not like a defa
 - One email, one job. Do not mix a receipt with a newsletter.
 - Write a specific subject under ~60 characters and a preview line that adds information.
 - Always ship a plain-text version. It is the fallback and the accessibility floor.
-- Inline CSS only. No external stylesheets, web fonts, or JavaScript.
+- Inline CSS only. No external stylesheets, web fonts, or JavaScript. Use the system sans stack
+  (Arial/Helvetica); Manrope is not available in email.
 - Table-based layout with a 600px max width; test at 320px.
 - Buttons need a real URL and visible text; no image-only CTAs.
 - Escape every variable. Never interpolate raw HTML or user URLs.

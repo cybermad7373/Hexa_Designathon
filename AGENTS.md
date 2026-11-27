@@ -61,6 +61,27 @@ Use the `skill` tool at the phase boundary. Do not just mention a skill in prose
 
 If a skill is unavailable, follow `docs/DESIGN-SYSTEM.md` and state which fallback you used.
 
+### Runtime portability
+
+These instructions target any agent runtime: Antigravity, Cursor, Claude Code, Qoder, Codex, or a
+plain chat with a free model. Adapt, do not stall:
+
+- No `skill` tool: read `docs/DESIGN-SYSTEM.md` and `docs/BRAND.md`, state the fallback.
+- No image generation: use a licensed asset or a typographic section; never fake a screenshot.
+- No subagents: work sequentially with the same gates and receipts.
+- Small context window: lean mode — `AGENTS.md`, the current phase prompt, its artifact, and
+  `docs/BRAND.md` for anything visual. Nothing else.
+- Never claim a tool result you did not observe. No invented test output, screenshots, or numbers.
+
+## Brand contract
+
+- Hexaware is the brand. Hexaware blue `#3C2CDA` is the only primary; Manrope is the only brand
+  typeface; the logo appears in blue, white, or black only. Full palette, roles, contrast pairs,
+  dark surfaces, and logo rules: `docs/BRAND.md`.
+- Colors ship as tokens in `apps/web/src/app/globals.css` and the email `BRAND` map. A hard-coded hex
+  in a component is a defect.
+- Read `docs/BRAND.md` before phase 06 and before touching any UI, email, slide, or diagram.
+
 ## Engineering contract
 
 1. **TypeScript strict.** No `any`, no `@ts-ignore`, no non-null assertions unless the invariant is
@@ -122,6 +143,17 @@ A feature is done only when it satisfies [docs/QUALITY-BAR.md](docs/QUALITY-BAR.
 - `npm run check` is green.
 - The build log is updated.
 
+## Top 1% bar
+
+"Done" is the quality bar. "Top 1%" is the standard: the twelve-point test in
+[docs/QUALITY-BAR.md](docs/QUALITY-BAR.md#the-top-1-test), passed with receipts.
+
+- Every claim carries evidence: test name, screenshot, log line, measured number, or source URL.
+  Delete any claim you cannot evidence.
+- Every phase leaves the next one faster: artifact, decision log, next command, top three risks.
+- Craft is visible in the details: real copy, designed states, brand tokens, no placeholder anything.
+- If time forces a cut, cut features, never evidence, security, accessibility, or the demo path.
+
 ## Do not
 
 - Invent APIs, datasets, benchmarks, customers, or testimonials.
@@ -131,6 +163,8 @@ A feature is done only when it satisfies [docs/QUALITY-BAR.md](docs/QUALITY-BAR.
 - Ship dead buttons, lorem ipsum, or placeholder links.
 - Put authorization logic only in the client.
 - Send email inline in a request transaction or log recipient addresses/reset links.
+- Invent brand colors, fonts, or logo variants outside `docs/BRAND.md`.
+- Paste a whole standard or skill into a prompt when a link will do.
 - Build product-specific features before the brief and phase 05/06 artifacts exist.
 - Run destructive database commands against a shared database.
 - Refactor during the T-60 test window. Fix blockers only.
@@ -154,12 +188,19 @@ Next: phase NN+1 — Name
 If a gate is blocked, stop and state the smallest decision needed to unblock it. Do not silently
 lower the bar.
 
-## Context hygiene
+## Context hygiene and budget
 
-- Read the discovery artifacts before re-deriving anything.
-- Do not re-research settled questions; cite the artifact instead.
-- Keep a decision log in the current phase artifact.
-- At handoff, write the current state, the next command, and the top three risks.
+- Read the discovery artifacts before re-deriving anything. Do not re-research settled questions;
+  cite the artifact instead.
+- Read only what the task needs, in this order: `AGENTS.md` → current phase prompt → its artifact →
+  `docs/BRAND.md` if the work is visual. Stop when the task is covered.
+- Budgets: at most three instruction files per phase (`AGENTS.md`, the phase prompt, one standard);
+  each phase prompt ≤ 6 KB; each artifact ≤ 150 lines unless it is a checklist. Expand only with a
+  decision, not prose.
+- One artifact per phase. Link, do not copy. Load one skill at a time, at its phase boundary, and
+  never paste skill text into an artifact.
+- Keep a decision log in the current phase artifact. At handoff, write the current state, the next
+  command, and the top three risks.
 - If the stack must change, write an ADR in `docs/decisions/` and update
   `docs/ARCHITECTURE.md` before coding.
 

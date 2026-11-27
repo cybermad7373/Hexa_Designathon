@@ -7,13 +7,13 @@ export interface RenderedEmail {
 }
 
 const BRAND = {
-  ink: "#08090a",
-  surface: "#101114",
-  line: "#24262c",
-  fg: "#f2f2ee",
-  muted: "#9b9ca3",
-  signal: "#d6ff3f",
-  signalInk: "#101400",
+  canvas: "#f8f8f9",
+  surface: "#ffffff",
+  line: "#cbd0e5",
+  fg: "#040d43",
+  muted: "#535983",
+  brand: "#3c2cda",
+  brandInk: "#ffffff",
 };
 
 function escapeHtml(value: string): string {
@@ -59,12 +59,12 @@ function layout({
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark light">
+<meta name="color-scheme" content="light">
 <title>${escapeHtml(heading)}</title>
 </head>
-<body style="margin:0;padding:0;background-color:${BRAND.ink};">
+<body style="margin:0;padding:0;background-color:${BRAND.canvas};">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${escapeHtml(preview)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${BRAND.ink};padding:32px 16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${BRAND.canvas};padding:32px 16px;">
 <tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background-color:${BRAND.surface};border:1px solid ${BRAND.line};border-radius:16px;overflow:hidden;">
 <tr><td style="padding:22px 28px;border-bottom:1px solid ${BRAND.line};font:600 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:${BRAND.muted};">HEXA / DESIGNATHON OS</td></tr>
@@ -73,7 +73,7 @@ function layout({
 ${body}
 ${
   cta
-    ? `<a href="${safeUrl(cta.url)}" style="display:inline-block;margin-top:10px;padding:12px 20px;border-radius:999px;background-color:${BRAND.signal};color:${BRAND.signalInk};font:600 14px/1 Arial,Helvetica,sans-serif;text-decoration:none;">${escapeHtml(cta.label)}</a>`
+    ? `<a href="${safeUrl(cta.url)}" style="display:inline-block;margin-top:10px;padding:12px 20px;border-radius:999px;background-color:${BRAND.brand};color:${BRAND.brandInk};font:600 14px/1 Arial,Helvetica,sans-serif;text-decoration:none;">${escapeHtml(cta.label)}</a>`
     : ""
 }
 </td></tr>
@@ -204,7 +204,7 @@ const renderers: Renderers = {
     const body = [
       paragraph(`Hi ${name}, here is the latest activity in ${workspaceName}.`),
       `<p style="margin:0 0 14px;font:400 15px/1.65 Arial,Helvetica,sans-serif;color:${BRAND.muted};">${escapeHtml(summary).replace(/\n/g, "<br>")}</p>`,
-      `<p style="margin:0;font:13px/1.6 Arial,Helvetica,sans-serif;color:${BRAND.muted};">Manage your email preferences: <a href="${safeUrl(preferencesUrl)}" style="color:${BRAND.signal};">open settings</a></p>`,
+      `<p style="margin:0;font:13px/1.6 Arial,Helvetica,sans-serif;color:${BRAND.muted};">Manage your email preferences: <a href="${safeUrl(preferencesUrl)}" style="color:${BRAND.brand};">open settings</a></p>`,
     ].join("");
 
     return {

@@ -121,7 +121,7 @@ export default function HomePage() {
       <header className="border-b border-line/80">
         <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-5 sm:px-8">
           <a href="#main" className="group flex items-center gap-3">
-            <HexMark className="size-7 text-signal" />
+            <HexMark className="size-7 text-brand" />
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors group-hover:text-fg">
               Hexa / Designathon OS
             </span>
@@ -141,7 +141,7 @@ export default function HomePage() {
                 Standards
               </a>
             </nav>
-            <Badge tone="signal" dot>
+            <Badge tone="brand" dot>
               Standby
             </Badge>
           </div>
@@ -153,7 +153,7 @@ export default function HomePage() {
           <div className="rise">
             <Badge tone="outline">Operating system v1.0</Badge>
             <h1 className="mt-6 max-w-[12ch] text-[clamp(3rem,7vw,5.75rem)] font-medium leading-[0.95] tracking-[-0.045em]">
-              Ten hours. <span className="italic text-signal">No excuses.</span>
+              Ten hours. <span className="italic text-brand">No excuses.</span>
             </h1>
             <p className="mt-6 max-w-[46ch] text-base leading-relaxed text-muted sm:text-lg">
               A phase-gated operating system that turns a raw problem statement into a deployed,
@@ -176,8 +176,8 @@ export default function HomePage() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Mission status
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
-                  <span aria-hidden="true" className="size-1.5 rounded-full bg-signal" />
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
+                  <span aria-hidden="true" className="size-1.5 rounded-full bg-brand" />
                   Standby
                 </span>
               </div>
@@ -211,7 +211,7 @@ export default function HomePage() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Start here
                 </p>
-                <p className="mt-1.5 font-mono text-xs text-signal">
+                <p className="mt-1.5 font-mono text-xs text-brand">
                   Paste the brief, then run the master workflow.
                 </p>
               </div>
@@ -222,8 +222,8 @@ export default function HomePage() {
         <section aria-label="Operating facts" className="border-y border-line bg-surface/40">
           <div className="mx-auto grid w-full max-w-[1200px] grid-cols-2 gap-px bg-line md:grid-cols-4">
             {facts.map((fact) => (
-              <div key={fact.label} className="bg-ink px-5 py-6 sm:px-8">
-                <p className="font-mono text-2xl tracking-tight text-signal">{fact.value}</p>
+              <div key={fact.label} className="bg-canvas px-5 py-6 sm:px-8">
+                <p className="font-mono text-2xl tracking-tight text-brand">{fact.value}</p>
                 <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
                   {fact.label}
                 </p>
@@ -258,7 +258,7 @@ export default function HomePage() {
                 className="grid gap-3 py-5 transition-colors hover:bg-surface/60 sm:grid-cols-[2.5rem_7rem_1fr_auto] sm:items-baseline sm:gap-4 sm:px-2"
               >
                 <span className="font-mono text-xs text-muted">{phase.id}</span>
-                <span className="font-mono text-xs text-signal">{phase.time}</span>
+                <span className="font-mono text-xs text-brand">{phase.time}</span>
                 <div>
                   <p className="font-medium">{phase.name}</p>
                   <p className="mt-1 text-sm text-muted">{phase.gate}</p>
@@ -323,16 +323,16 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="border-signal bg-signal p-7 text-signal-ink lg:col-span-7">
+              <Card className="border-brand bg-brand p-7 text-brand-ink lg:col-span-7">
                 <div className="flex items-start justify-between gap-6">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal-ink/70">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-ink/70">
                       04 / Demo
                     </p>
                     <h3 className="mt-4 text-2xl font-medium tracking-[-0.02em]">
                       The demo is the product.
                     </h3>
-                    <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-signal-ink/75">
+                    <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-brand-ink/75">
                       One golden path, rehearsed twice, with a fallback recording. Judges remember
                       the story and the live moment, not the feature count.
                     </p>
@@ -370,7 +370,7 @@ export default function HomePage() {
                         size={16}
                         weight="bold"
                         aria-hidden="true"
-                        className="mt-0.5 shrink-0 text-signal"
+                        className="mt-0.5 shrink-0 text-brand"
                       />
                       <span>{item}</span>
                     </li>
@@ -393,13 +393,13 @@ export default function HomePage() {
                 </div>
                 <div className="mt-6 space-y-2 border-t border-line pt-5 font-mono text-xs text-fg">
                   <p>
-                    <span className="text-signal">$</span> npm run check
+                    <span className="text-brand">$</span> npm run check
                   </p>
                   <p>
-                    <span className="text-signal">$</span> npm run test:e2e
+                    <span className="text-brand">$</span> npm run test:e2e
                   </p>
                   <p>
-                    <span className="text-signal">$</span> npm run release:check
+                    <span className="text-brand">$</span> npm run release:check
                   </p>
                 </div>
               </Card>

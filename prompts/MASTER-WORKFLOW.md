@@ -22,6 +22,10 @@ the artifact instead.
 8. **If blocked**, state the smallest decision needed to unblock. Do not silently lower the bar.
 9. **Read the repo docs** before re-deriving anything: `AGENTS.md`, `docs/ARCHITECTURE.md`,
    `docs/SECURITY.md`, `docs/SCALABILITY.md`, `docs/DESIGN-SYSTEM.md`, `docs/QUALITY-BAR.md`.
+10. **Brand is locked.** Hexaware blue `#3C2CDA` is the only primary, Manrope the only brand
+    typeface, palette and logo rules in `docs/BRAND.md`. No off-palette color ships.
+11. **Protect the context budget.** Read only the current phase prompt and its artifact; link to
+    standards instead of pasting them; keep each artifact under ~150 lines.
 
 ## Start sequence
 
@@ -82,6 +86,7 @@ If the problem statement is missing, ask for it and stop. Do not invent one.
 ### Design
 
 - Declare the design read before choosing visuals.
+- Use the Hexaware tokens in `docs/BRAND.md`: brand blue primary, Manrope, one accent, one theme.
 - One accent, one radius rule, one icon family, one theme per page.
 - Hero fits the viewport; navigation is one line on desktop.
 - No AI-purple gradients, generic glass, three equal feature cards, eyebrow spam, fake screenshots,
@@ -257,6 +262,8 @@ Skills (call the `skill` tool now):
 
 Do:
 
+- Start from `docs/BRAND.md`. Palette, typeface, and logo usage are fixed; layout, imagery, and
+  motion are the design decisions.
 - Write the design read: page kind, audience, vibe, system or aesthetic family.
 - Set the dials: variance, motion, density.
 - Define tokens: color, type, spacing, radius, elevation, motion.

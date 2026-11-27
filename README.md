@@ -5,7 +5,8 @@ deployed, secure, scalable, demo-ready product with the receipts.
 
 The repo ships with a production-ready Next.js + TypeScript + Postgres scaffold, a discovery
 workflow, a visual quality bar, a security and scalability standard, and a protected final test
-window.
+window. The interface runs on the locked Hexaware brand system: Hexaware blue `#3C2CDA`, Manrope,
+and the palette in [docs/BRAND.md](docs/BRAND.md).
 
 ## Quickstart
 
@@ -44,6 +45,7 @@ problem statement is in place, run the master workflow and build only what the b
 │   ├── ARCHITECTURE.md           # default stack and layering rules
 │   ├── SCALABILITY.md            # capacity, caching, pagination, load tests
 │   ├── SECURITY.md               # threat model and OWASP checklist
+│   ├── BRAND.md                  # locked Hexaware palette, type, logo rules
 │   ├── DESIGN-SYSTEM.md          # anti-slop visual standard
 │   ├── NAMING.md                 # product naming and rebrand checklist
 │   ├── QUALITY-BAR.md            # definition of done and release gate
@@ -101,7 +103,7 @@ The full runbook is [prompts/MASTER-WORKFLOW.md](prompts/MASTER-WORKFLOW.md). Th
 ## Default stack
 
 - **Next.js 15** App Router, React 19, TypeScript strict
-- **Tailwind CSS 4** with design tokens, Geist fonts
+- **Tailwind CSS 4** with Hexaware design tokens, Manrope (brand) and Geist Mono
 - **PostgreSQL 16** + **Prisma 6** (multi-tenant foundation)
 - **RBAC policy** with four roles, permissions, and escalation guards
 - **Email outbox** with templates, preferences, suppression, retries, and Mailpit locally
@@ -123,6 +125,7 @@ clean. Re-check the pins when Next.js or Prisma is upgraded.
 - [Security](docs/SECURITY.md): authz, RBAC, tenancy, email safety, validation, rate limits, secrets, OWASP.
 - [Scalability](docs/SCALABILITY.md): budgets, pagination, caching, queues, load tests.
 - [Quality bar](docs/QUALITY-BAR.md): definition of done and release gate.
+- [Brand](docs/BRAND.md): locked palette, tokens, typography, logo rules.
 - [Design system](docs/DESIGN-SYSTEM.md): visual direction, motion, accessibility, email design.
 - [Testing](docs/TESTING.md): the T-60 final test sequence.
 

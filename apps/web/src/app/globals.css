@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @theme {
-  --color-ink: #08090a;
-  --color-surface: #101114;
-  --color-surface-2: #15171b;
-  --color-line: #24262c;
-  --color-fg: #f2f2ee;
-  --color-muted: #9b9ca3;
-  --color-signal: #d6ff3f;
-  --color-signal-ink: #101400;
+  --color-canvas: #f8f8f9;
+  --color-surface: #ffffff;
+  --color-surface-2: #eeeff2;
+  --color-line: #cbd0e5;
+  --color-fg: #040d43;
+  --color-muted: #535983;
+  --color-brand: #3c2cda;
+  --color-brand-hover: #3224bd;
+  --color-brand-ink: #ffffff;
+  --color-danger: #da2d2c;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -31,12 +33,12 @@
   }
 
   ::selection {
-    background-color: var(--color-signal);
-    color: var(--color-signal-ink);
+    background-color: var(--color-brand);
+    color: var(--color-brand-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-brand);
     outline-offset: 3px;
   }
 }
@@ -49,12 +51,12 @@
   background-image:
     linear-gradient(
       to right,
-      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      color-mix(in oklab, var(--color-fg) 6%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      color-mix(in oklab, var(--color-fg) 6%, transparent) 1px,
       transparent 1px
     );
   background-size: 72px 72px;
@@ -67,8 +69,8 @@
   left: 1rem;
   z-index: 100;
   border-radius: 9999px;
-  background-color: var(--color-signal);
-  color: var(--color-signal-ink);
+  background-color: var(--color-brand);
+  color: var(--color-brand-ink);
   padding: 0.625rem 1rem;
   font-size: 0.875rem;
   font-weight: 600;

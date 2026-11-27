@@ -3,7 +3,7 @@
 This project is distributed under the MIT License (see [LICENSE](LICENSE)). It depends on
 the third-party packages listed below. Each package remains subject to its own license.
 
-Generated on 2026-11-22 from `package-lock.json`.
+Generated on 2026-11-27 from `package-lock.json`.
 This is a snapshot: regenerate it after dependency upgrades so versions and counts match the lockfile.
 Full license texts are in the [`licenses/`](licenses) directory. Package-specific
 copyright lines are kept in each package's own LICENSE file under `node_modules/`.
@@ -25,7 +25,7 @@ copyright lines are kept in each package's own LICENSE file under `node_modules/
 | Apache-2.0 AND LGPL-3.0-or-later AND MIT | 1 |
 | Python-2.0 | 1 |
 | CC-BY-4.0 | 1 |
-| SIL OPEN FONT LICENSE | 1 |
+| SIL OPEN FONT LICENSE | 2 |
 | CC0-1.0 | 1 |
 | MIT-0 | 1 |
 
@@ -54,6 +54,7 @@ copyright lines are kept in each package's own LICENSE file under `node_modules/
 | Package | Version | License | Source |
 | --- | --- | --- | --- |
 | `@emnapi/runtime` | 1.11.3 | MIT | <https://github.com/toyobayashi/emnapi> |
+| `@fontsource-variable/manrope` | 5.3.0 | SIL OPEN FONT LICENSE | <https://github.com/fontsource/font-files> |
 | `@img/colour` | 1.1.0 | MIT | <https://github.com/lovell/colour> |
 | `@img/sharp-darwin-arm64` | 0.35.5 | Apache-2.0 | <https://www.npmjs.com/package/@img/sharp-darwin-arm64/v/0.35.5> |
 | `@img/sharp-darwin-x64` | 0.35.5 | Apache-2.0 | <https://www.npmjs.com/package/@img/sharp-darwin-x64/v/0.35.5> |

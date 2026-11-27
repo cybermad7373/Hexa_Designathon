@@ -3,6 +3,24 @@
 A feature is done when it works, fails safely, and can be demonstrated. "It compiles" is not done.
 "The happy path works on my machine" is not done.
 
+## The top 1% test
+
+Good products pass the checklist. Top 1% products pass this. One "no" means the build is not
+demo-ready, whatever the feature count says.
+
+1. One sentence names the insight; a stranger can repeat it after the demo.
+2. The first screen proves the product in five seconds, without a voiceover.
+3. The golden path completes cold, from seeded data, in under three minutes.
+4. Every state is designed: loading, empty, error, unauthorized, pending, success, failure.
+5. Every claim has a receipt: test, screenshot, log, or measured number. No receipt, no claim.
+6. Brand is applied without drift: Hexaware tokens, Manrope, one accent, zero off-palette hex.
+7. Tenancy and authorization are proven by tests, not just by code review.
+8. Performance is measured on the demo machine: LCP, INP, CLS, first-load JS.
+9. A keyboard-only run completes the golden path with visible focus.
+10. The email moment lands in Mailpit on stage, with the plain-text fallback.
+11. Copy passes the read-aloud test: specific, grammatical, no filler, no invented numbers.
+12. A judge's "what if…" question has a one-line answer and a fallback path.
+
 ## Definition of done
 
 ### Product
@@ -13,6 +31,7 @@ A feature is done when it works, fails safely, and can be demonstrated. "It comp
 - [ ] Every action has pending, success, and failure feedback.
 - [ ] No dead buttons, placeholder links, lorem ipsum, or fake data presented as real.
 - [ ] Copy is specific, grammatical, and free of invented metrics.
+- [ ] UI and email use `docs/BRAND.md` tokens; no off-palette hex in shipped code.
 
 ### Engineering
 
@@ -136,6 +155,7 @@ Keep receipts in the release report. Claims without evidence do not count.
 | RBAC enforced          | Policy tests + two-role e2e or integration test |
 | Email delivered        | Mailpit screenshot + outbox status evidence     |
 | Scalable               | Load smoke result + pagination/index references |
+| Brand fidelity         | Token grep for off-palette hex + screenshot      |
 
 ## Self-score rubric
 

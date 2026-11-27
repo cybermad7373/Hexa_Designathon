@@ -22,7 +22,7 @@ The clock is the constraint. Scope is the variable. Quality is not.
 | 1:20–1:45   | 03 Research      | Prior art, APIs, datasets, build-vs-borrow     | Reuse decisions made          |
 | 1:45–2:15   | 04 Enhance PS    | Scoped PRD, metrics, acceptance criteria       | Scope and cut line agreed     |
 | 2:15–3:00   | 05 Solution      | Architecture, data, API, authz, slices         | Design review pass            |
-| 3:00–3:30   | 06 Visual        | Design read, tokens, references                | Visual direction locked       |
+| 3:00–3:30   | 06 Visual        | Design read, brand tokens (`BRAND.md`), refs   | Visual direction locked       |
 | 3:30–5:00   | 07 Build A       | Foundation, data, auth, core read path         | Golden path half-working      |
 | 5:00–6:45   | 07 Build B       | Core write path, secondary flow, polish        | Golden path end to end        |
 | 6:45–7:45   | 08 Harden        | Security, scale, a11y, perf fixes              | No high/critical findings     |
